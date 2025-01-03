@@ -21,6 +21,10 @@ return [
     'phone_number_placeholder' => 'Enter your phone number',
     'dont_have_account' => "Don't have an account?",
     'already_have_account' => 'Already have an account?',
+    'invalid_credentials' => 'Sorry, your crendentials is invalid.',
+    'back_to' => 'Back to',
+    'underpaid' => 'You are still underpaid :amount',
+    'registration_success' => 'Registration Successfully!'
 ];
 
 ?>

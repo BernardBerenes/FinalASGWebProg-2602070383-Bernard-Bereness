@@ -39,22 +39,24 @@
                 </ul>
             </div>
             @auth
-                <div class="dropdown">
-                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('assets/images/default-avatar.png') }}" alt="Profile" class="rounded-circle" style="height: 40px; width: 40px;">
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="">Profile</a></li>
-                        <li><a class="dropdown-item" href="">Settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button class="dropdown-item" type="submit">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+            <div class="dropdown">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('assets/images/default-avatar.png') }}" alt="Profile" class="rounded-circle" style="height: 40px; width: 40px;">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="profileDropdown" style="width: 200px;">
+                    <li><strong class="px-3 d-block text-truncate" style="max-width: 180px;">{{ Auth::user()->name }}</strong></li>
+                    <li><a class="dropdown-item" href="">Profile</a></li>
+                    <li><a class="dropdown-item" href="">Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button class="dropdown-item" type="submit">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            
             @endauth
             @guest
                 <div class="d-flex">

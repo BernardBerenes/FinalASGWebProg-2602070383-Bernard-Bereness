@@ -8,8 +8,13 @@
 </head>
 <body class="bg-light">
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px;">
+        <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px;"> 
             <h2 class="text-center mb-4">@lang('lang.login')</h2>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="mb-3">
@@ -35,6 +40,12 @@
                     <p>@lang('lang.dont_have_account') <a href="{{ route('registerPage') }}" class="text-decoration-none">@lang('lang.register')</a></p>
                 </div>
             </form>
+            <div class="text-center mt-3">
+                <p class="mb-0">
+                    @lang('lang.back_to')
+                    <a href="{{ route('homePage') }}" class="text-decoration-none">@lang('lang.home')</a>
+                </p>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

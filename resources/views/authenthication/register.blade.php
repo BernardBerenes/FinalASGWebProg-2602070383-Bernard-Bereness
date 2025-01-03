@@ -70,8 +70,82 @@
                     <p>@lang('lang.already_have_account') <a href="{{ route('loginPage') }}" class="text-decoration-none">@lang('lang.login')</a></p>
                 </div>
             </form>
+            <div class="text-center mt-3">
+                <p class="mb-0">
+                    @lang('lang.back_to')
+                    <a href="{{ route('homePage') }}" class="text-decoration-none">@lang('lang.home')</a>
+                </p>
+            </div>
         </div>
     </div>
+    @if (session('payment') == true)
+        {{-- Modal Start --}}
+        <div class="modal fade" id="payment" tabindex="-1" aria-labelledby="paymentModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <form method="POST" action="{{ route('payment') }}" class="modal-content">
+                    @csrf
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="paymentModal">Payment</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Registration Fee: <strong>Rp {{ session('registration_fee') }}</strong></p>
+                        <div>
+                            <div class="mb-3">
+                                <label for="amount" class="form-label">Enter Amount</label>
+                                <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter the fee amount" value="{{ old('amount') }}">
+                                @error('amount')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="submitPayment">Pay</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{-- Modal End --}}
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var paymentModal = new bootstrap.Modal(document.getElementById('payment'));
+                paymentModal.show();
+            });
+        </script>
+    @endif 
+
+    @if (session('overpaid'))
+        {{-- Modal Start --}}
+        <div class="modal fade" id="overpaid" tabindex="-1" aria-labelledby="overpaidModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <form method="POST" action="{{ route('overpaidPayment') }}" class="modal-content">
+                    @csrf
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="overpaidModal">Overpaid</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Sorry you overpaid <strong> {{ session('overpaid') }}</strong>, would you like to enter a balance?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary" id="submitPayment">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{-- Modal End --}}
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var overpaidModal = new bootstrap.Modal(document.getElementById('overpaid'));
+                overpaidModal.show();
+            });
+        </script>
+    @endif
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

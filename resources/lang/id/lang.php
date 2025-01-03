@@ -20,7 +20,11 @@ return [
     'phone_number' => 'Nomor Handphone',
     'phone_number_placeholder' => 'Masukan nomor handphone anda',
     'dont_have_account' => "Tidak punya akun?",
-    'already_have_account' => 'Sudah punya akun?'
+    'already_have_account' => 'Sudah punya akun?',
+    'invalid_credentials' => 'Maaf, kredensial Anda tidak valid.',
+    'back_to' => 'Kembali ke',
+    'underpaid' => 'You are still underpaid :amount',
+    'registration_success' => 'Registrasi Berhasil!'
 ];
 
 ?>

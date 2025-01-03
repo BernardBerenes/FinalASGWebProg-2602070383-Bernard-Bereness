@@ -10,7 +10,7 @@ class AuthenthicationController extends Controller
 {
     public function register(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|min:3',
             'email' => 'required|unique:users,email|email',
             'password' => 'required|regex:/[0-9]/|regex:/[a-z]/|regex:/[A-Z]/|regex:/[@$!%*?&#]/',
@@ -38,17 +38,61 @@ class AuthenthicationController extends Controller
             'phone_number.digits' => __('validation.phone_number_digit')
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'gender' => $request->gender,
-            'fields_of_interest' => json_encode(explode(',', $request->fields_of_interest)),
-            'linkedin_username' => $request->linkedin_username,
-            'phone_number' => $request->phone_number,
+        session([
+            'user_data' => $validated,
+            'registration_fee' => rand(100000, 125000),
+            'payment' => true,
+            'payment_expires' => now()->addSecond(60)
         ]);
 
-        return redirect(route('loginPage'));
+        return back()->withInput();
+    }
+
+    public function payment(Request $request)
+    {
+        if ($request->amount == session('registration_fee')){
+            $user_data = session('user_data');
+            User::create([
+                'name' => $user_data['name'],
+                'email' => $user_data['email'],
+                'password' => $user_data['password'],
+                'gender' => $user_data['gender'],
+                'fields_of_interest' => json_encode(explode(',', $user_data['fields_of_interest'])),
+                'linkedin_username' => $user_data['linkedin_username'],
+                'phone_number' => $user_data['phone_number']
+            ]);
+
+            session()->flush();
+
+            return redirect(route('loginPage'))->with('success', __('lang.registration_success'));
+        } else if ($request->amount < session('registration_fee')){
+            return back()->withErrors(['amount' => __('lang.underpaid', ['amount' => session('registration_fee') - $request->amount])]);
+        } else{
+            session([
+                'overpaid' => $request->amount - session('registration_fee') 
+            ]);
+
+            return back();
+        }
+    }
+
+    public function overpaidPayment()
+    {
+        $user_data = session('user_data');
+        User::create([
+            'name' => $user_data['name'],
+            'email' => $user_data['email'],
+            'password' => $user_data['password'],
+            'gender' => $user_data['gender'],
+            'fields_of_interest' => json_encode(explode(',', $user_data['fields_of_interest'])),
+            'linkedin_username' => $user_data['linkedin_username'],
+            'phone_number' => $user_data['phone_number'],
+            'coin' => session('overpaid')
+        ]);
+
+        session()->flush();
+
+        return redirect(route('loginPage'))->with('success', __('lang.registration_success'));
     }
 
     public function login(Request $request)
@@ -64,7 +108,7 @@ class AuthenthicationController extends Controller
 
         if (Auth::attempt($credentials)) return redirect(route('homePage'));
 
-        return back();
+        return back()->withErrors(['password' => __('lang.invalid_credentials')]);
     }
 
     public function logout(Request $request)
