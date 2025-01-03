@@ -9,44 +9,65 @@
 <body class="bg-light">
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card p-4 shadow-lg" style="width: 100%; max-width: 500px;">
-            <h2 class="text-center mb-4">Register</h2>
+            <h2 class="text-center mb-4">@lang('lang.register')</h2>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                    <label for="name" class="form-label">@lang('lang.full_name')</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="@lang('lang.full_name_placeholder')" value="{{ old('name') }}">
+                    @error('name')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="@lang('lang.email_placeholder')" value="{{ old('email') }}">
+                    @error('email')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="@lang('lang.password_placeholder')">
+                    @error('password')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="gender" class="form-label">Gender</label>
-                    <select class="form-select" id="gender" name="gender" required>
-                        <option value="" disabled selected>Select your gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                    <label for="gender" class="form-label">@lang('lang.gender')</label>
+                    <select class="form-select" id="gender" name="gender">
+                        <option value="" disabled selected>@lang('lang.gender_placeholder')</option>
+                        <option value="Male" {{ old('gender') == 'Male' ? 'selected' : ''}}>@lang('lang.male')</option>
+                        <option value="Female" {{ old('gender') == 'Female' ? 'selected' : ''}}>@lang('lang.female')</option>
                     </select>
+                    @error('gender')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="fields_of_interest" class="form-label">Fields of Interest</label>
-                    <input type="text" class="form-control" id="fields_of_interest" name="fields_of_interest" placeholder="Enter at least 3 fields (comma-separated)" required>
+                    <label for="fields_of_interest" class="form-label">@lang('lang.fields_of_interest')</label>
+                    <input type="text" class="form-control" id="fields_of_interest" name="fields_of_interest" placeholder="@lang('lang.fields_of_interest_placeholder')" value="{{ old('fields_of_interest') }}">
+                    @error('fields_of_interest')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="linkedin_username" class="form-label">LinkedIn Profile</label>
-                    <input type="text" class="form-control" id="linkedin_username" name="linkedin_username" placeholder="https://www.linkedin.com/in/yourusername" required>
+                    <label for="linkedin_username" class="form-label">@lang('lang.linkedin_username')</label>
+                    <input type="text" class="form-control" id="linkedin_username" name="linkedin_username" placeholder="https://www.linkedin.com/in/yourusername" value="{{ old('linkedin_username') }}">
+                    @error('linkedin_username')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="phone_number" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
+                    <label for="phone_number" class="form-label">@lang('lang.phone_number')</label>
+                    <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="@lang('lang.phone_number_placeholder')" value="{{ old('phone_number') }}">
+                    @error('phone_number')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
-                <button type="submit" class="btn btn-success w-100">Register</button>
+                <button type="submit" class="btn btn-success w-100">@lang('lang.register')</button>
                 <div class="text-center mt-3">
-                    <a href="{{ route('loginPage') }}" class="text-decoration-none">Already have an account? Login</a>
+                    <p>@lang('lang.already_have_account') <a href="{{ route('loginPage') }}" class="text-decoration-none">@lang('lang.login')</a></p>
                 </div>
             </form>
         </div>
