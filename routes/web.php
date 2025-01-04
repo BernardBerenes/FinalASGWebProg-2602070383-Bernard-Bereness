@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/top-up', [CoinController::class, 'topup'])->name('topup');
     
     Route::post('/logout', [AuthenthicationController::class, 'logout'])->name('logout');
+    
+    Route::get('/my-profile', [NavigationController::class, 'myProfilePage'])->name('myProfilePage');
 });
 
 Route::get('/set-locale/{locale}', function ($locale) {

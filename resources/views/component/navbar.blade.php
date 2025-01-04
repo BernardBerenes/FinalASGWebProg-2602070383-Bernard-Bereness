@@ -14,8 +14,8 @@
             </ul>
         </div>
         <div class="d-flex align-items-center">
-            <form class="d-flex me-2" role="search">
-                <input class="form-control me-2" type="search" placeholder="@lang('lang.search_friend')" aria-label="Search">
+            <form method="GET" action="{{ route('friendPage') }}" class="d-flex me-2" role="search">
+                <input class="form-control me-2" type="text" name="name" placeholder="@lang('lang.search_friend')" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">@lang('lang.search')</button>
             </form>
             <div class="d-flex align-items-center me-2">
@@ -48,7 +48,7 @@
                             <li>
                                 <strong class="px-3 d-block text-truncate" style="max-width: 180px;">{{ Auth::user()->name }}</strong>
                             </li>
-                            <li><a class="dropdown-item mt-2" href="">@lang('lang.profile')</a></li>
+                            <li><a class="dropdown-item mt-2" href="{{ route('myProfilePage') }}">@lang('lang.profile')</a></li>
                             <li><a class="dropdown-item" href="{{ route('topupPage') }}">@lang('lang.top_up') Coin</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>

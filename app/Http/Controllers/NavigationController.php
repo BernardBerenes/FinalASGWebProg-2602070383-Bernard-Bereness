@@ -12,19 +12,29 @@ class NavigationController extends Controller
     public function homePage()
     {
         if (Auth::check()){
-            $user = Friend::with('sender_id', 'receiver_id')->get();
-        } else{
             $user = User::all();
+        } else{
         }
 
         return view('pages.index')->with('users', $user);
     }
 
-    public function friendPage()
+    public function friendPage(Request $request)
     {
-        if (Auth::check()){
+        if (!Auth::check()){
+            $users = User::
+                when($request->gender, function ($query) use ($request) {
+                    return $query->where('gender', $request->gender);
+                })
+                ->when($request->fields_of_interest, function ($query) use ($request) {
+                    return $query->where('fields_of_interest', 'LIKE', '%'.$request->fields_of_interest.'%');
+                })
+                ->when($request->name, function ($query) use ($request) {
+                    return $query->where('name', 'LIKE', '%'.$request->name.'%');
+                })
+                ->get();
+        } else{
             $authUserId = Auth::user()->id;
-            // $excludedUserIds = array_merge($excludedUserIds, [Auth::user()->id]);
             $excludedUserIds = Friend::where('sender_id', $authUserId)
                 ->orWhere('receiver_id', $authUserId)
                 ->get(['sender_id', 'receiver_id'])
@@ -35,12 +45,21 @@ class NavigationController extends Controller
                 ->unique()
                 ->toArray();
 
-            $users = User::whereNotIn('id', $excludedUserIds)->get();
-        } else{
-            $users = User::all();
+                $users = User::
+                whereNotIn('id', $excludedUserIds)
+                ->when($request->gender, function ($query) use ($request) {
+                    return $query->where('gender', $request->gender);
+                })
+                ->when($request->fields_of_interest, function ($query) use ($request) {
+                    return $query->where('fields_of_interest', 'LIKE', '%'.$request->fields_of_interest.'%');
+                })
+                ->when($request->name, function ($query) use ($request) {
+                    return $query->where('name', 'LIKE', '%'.$request->name.'%');
+                })
+                ->get();
         }
 
-        return view('pages.friend')->with('users', $users);
+        return view('pages.friend')->with('users', $users)->with('gender_filter', $request->gender)->with('fields_of_interest_filter', $request->fields_of_interest);
     }
 
     public function registerPage()
@@ -62,5 +81,10 @@ class NavigationController extends Controller
     public function topupPage()
     {
         return view('pages.top-up');
+    }
+
+    public function myProfilePage()
+    {
+        return view('pages.profile');
     }
 }

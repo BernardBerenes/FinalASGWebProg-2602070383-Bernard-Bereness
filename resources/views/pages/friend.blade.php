@@ -3,26 +3,24 @@
 @section('content')
     <div class="container mt-4">
         <div class="row">
-            <!-- Sidebar for Filters -->
             <div class="col-md-3">
                 <h5>Filter</h5>
-                <form method="GET" action="{{ route('homePage') }}">
+                <form method="GET" action="{{ route('friendPage') }}">
                     <div class="mb-3">
                         <label for="genderFilter" class="form-label">@lang('lang.gender')</label>
                         <select name="gender" id="genderFilter" class="form-select">
                             <option value="">@lang('lang.all')</option>
-                            <option value="male">@lang('lang.male')</option>
-                            <option value="female">@lang('lang.female')</option>
+                            <option value="Male" {{ $gender_filter == 'Male' ? 'selected' : ''}}>@lang('lang.male')</option>
+                            <option value="Female" {{ $gender_filter == 'Female' ? 'selected' : ''}}>@lang('lang.female')</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="hobbyFilter" class="form-label">@lang('lang.fields_of_interest')</label>
-                        <input type="text" name="filter" id="hobbyFilter" class="form-control" placeholder="@lang('lang.search')">
+                        <label for="fieldInterestFilter" class="form-label">@lang('lang.fields_of_interest')</label>
+                        <input type="text" name="fields_of_interest" id="fieldInterestFilter" class="form-control" placeholder="@lang('lang.search')" value="{{ $fields_of_interest_filter }}">
                     </div>
                     <button type="submit" class="btn btn-primary w-100">@lang('lang.apply_filter')</button>
                 </form>
             </div>
-
             <div class="col-md-9">
                 <h3 class="mb-4">@lang('lang.friend')</h3>
                 <div class="row">
