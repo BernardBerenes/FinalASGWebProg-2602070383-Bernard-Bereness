@@ -2,10 +2,14 @@
 
 return [
     'home' => 'Home',
+    'friend' => 'Friend',
     'search_friend' => 'Search Friend Here!!',
     'search' => 'Search',
     'login' => 'Login',
     'register' => 'Register',
+    'profile' => 'Profile',
+    'top_up' => 'Top Up',
+    'logout' => 'Logout',
     'full_name' => 'Full Name',
     'full_name_placeholder' => 'Enter your full name',
     'email_placeholder' => 'Enter your email',
@@ -24,7 +28,10 @@ return [
     'invalid_credentials' => 'Sorry, your crendentials is invalid.',
     'back_to' => 'Back to',
     'underpaid' => 'You are still underpaid :amount',
-    'registration_success' => 'Registration Successfully!'
+    'registration_success' => 'Registration Successfully!',
+    'all' => 'All',
+    'apply_filter' => 'Apply Filter',
+    'add_friend' => 'Add Friend'
 ];
 
 ?>

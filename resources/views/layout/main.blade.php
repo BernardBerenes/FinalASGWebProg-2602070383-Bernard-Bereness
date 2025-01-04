@@ -9,7 +9,7 @@
     <title>Connect Friend</title>
 </head>
 <body>
-    <div class="container-fluid m-0 p-0 w-100 h-100 bg-success bg-opacity-10">
+    <div class="container-fluid m-0 p-0 w-100 h-100">
         @include('component.navbar')
         
         <div>

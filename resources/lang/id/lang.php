@@ -2,10 +2,14 @@
 
 return [
     'home' => 'Beranda',
+    'friend' => 'Teman',
     'search_friend' => 'Cari Teman Disini!!',
     'search' => 'Cari',
     'login' => 'Masuk',
     'register' => 'Daftar',
+    'profile' => 'Profil',
+    'top_up' => 'Isi Ulang',
+    'logout' => 'Keluar',
     'full_name' => 'Nama Lengkap',
     'full_name_placeholder' => 'Masukan nama lengkap anda',
     'email_placeholder' => 'Masukan email anda',
@@ -24,7 +28,10 @@ return [
     'invalid_credentials' => 'Maaf, kredensial Anda tidak valid.',
     'back_to' => 'Kembali ke',
     'underpaid' => 'You are still underpaid :amount',
-    'registration_success' => 'Registrasi Berhasil!'
+    'registration_success' => 'Registrasi Berhasil!',
+    'all' => 'Semua',
+    'apply_filter' => 'Terapkan',
+    'add_friend' => 'Tambah Pertemanan'
 ];
 
 ?>

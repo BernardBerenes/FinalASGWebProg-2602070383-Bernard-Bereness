@@ -117,6 +117,6 @@ class AuthenthicationController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return back();
+        return redirect(route('loginPage'));
     }
 }
