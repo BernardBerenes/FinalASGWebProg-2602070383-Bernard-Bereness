@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthenthicationController;
+use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\CoinController;
 use App\Http\Controllers\FriendController;
 use App\Http\Controllers\NavigationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [NavigationController::class, 'homePage'])->name('homePage');
@@ -33,6 +35,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthenthicationController::class, 'logout'])->name('logout');
     
     Route::get('/my-profile', [NavigationController::class, 'myProfilePage'])->name('myProfilePage');
+
+    Route::post('/change-visibility', [UserController::class, 'changeVisibility'])->name('changeVisibility');
+
+    Route::get('/avatar-market', [NavigationController::class, 'avatarMarketPage'])->name('avatarMarketPage');
+    Route::post('/purchase-avatar/{avatar_id}', [AvatarController::class, 'purchaseAvatar'])->name('purchaseAvatar');
 });
 
 Route::get('/set-locale/{locale}', function ($locale) {

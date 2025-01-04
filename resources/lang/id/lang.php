@@ -31,7 +31,18 @@ return [
     'registration_success' => 'Registrasi Berhasil!',
     'all' => 'Semua',
     'apply_filter' => 'Terapkan',
-    'add_friend' => 'Tambah Pertemanan'
+    'add_friend' => 'Tambah Pertemanan',
+    'profile_detail' => 'Detail Profil',
+    'profile_visibility' => 'Visibilitas Profil',
+    'make_profile_visible' => 'Jadikan Profil Terlihat',
+    'toggle_visible' => 'Beralih untuk menampilkan atau menyembunyikan profil anda dari orang lain.',
+    'your_avatar' => 'Avatar Kamu',
+    'dont_have_avatar' => 'Anda belum memiliki avatar apa pun.',
+    'buy_new_avatar' => 'Beli Avatar Baru',
+    'avatar_shop' => 'Toko Avatar',
+    'avatar_shop_tag' => 'Telusuri dan beli avatar untuk menyesuaikan profil anda.',
+    'buy_now' => 'Beli Sekarang',
+    'insufficient_coins' => 'Koin Tidak Cukup'
 ];
 
 ?>

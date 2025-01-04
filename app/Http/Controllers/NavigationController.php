@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avatar;
+use App\Models\AvatarTransaction;
 use App\Models\Friend;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,6 +34,7 @@ class NavigationController extends Controller
                 ->when($request->name, function ($query) use ($request) {
                     return $query->where('name', 'LIKE', '%'.$request->name.'%');
                 })
+                ->where('visibility', true)
                 ->get();
         } else{
             $authUserId = Auth::user()->id;
@@ -56,6 +59,7 @@ class NavigationController extends Controller
                 ->when($request->name, function ($query) use ($request) {
                     return $query->where('name', 'LIKE', '%'.$request->name.'%');
                 })
+                ->where('visibility', true)
                 ->get();
         }
 
@@ -85,6 +89,19 @@ class NavigationController extends Controller
 
     public function myProfilePage()
     {
-        return view('pages.profile');
+        $ownedAvatarIds = AvatarTransaction::where('buyer_id', Auth::user()->id)->pluck('avatar_id');
+
+        $avatars = Avatar::whereIn('id', $ownedAvatarIds)->get();
+
+        return view('pages.profile', compact('avatars'));
+    }
+
+    public function avatarMarketPage()
+    {
+        $ownedAvatarIds = AvatarTransaction::where('buyer_id', Auth::user()->id)->pluck('avatar_id');
+
+        $avatars = Avatar::whereNotIn('id', $ownedAvatarIds)->paginate(6);
+
+        return view('pages.avatar-market', compact('avatars'));
     }
 }

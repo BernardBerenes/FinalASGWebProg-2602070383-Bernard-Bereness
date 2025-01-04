@@ -11,6 +11,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('friendPage') ? 'active' : '' }}" href="{{ route('friendPage') }}">@lang('lang.friend')</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('avatarMarketPage') ? 'active' : '' }}" href="{{ route('avatarMarketPage') }}">Avatar</a>
+                </li>
             </ul>
         </div>
         <div class="d-flex align-items-center">

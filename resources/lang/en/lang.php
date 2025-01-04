@@ -31,7 +31,18 @@ return [
     'registration_success' => 'Registration Successfully!',
     'all' => 'All',
     'apply_filter' => 'Apply Filter',
-    'add_friend' => 'Add Friend'
+    'add_friend' => 'Add Friend',
+    'profile_detail' => 'Profile Details',
+    'profile_visibility' => 'Profile Visibility',
+    'make_profile_visible' => 'Make Profile Visible',
+    'toggle_visible' => 'Toggle to show or hide your profile from others.',
+    'your_avatar' => 'Your Avatars',
+    'dont_have_avatar' => "You don't have any avatars yet.",
+    'buy_new_avatar' => 'Buy New Avatar',
+    'avatar_shop' => 'Avatar Shop',
+    'avatar_shop_tag' => 'Browse and purchase avatars to customize your profile.',
+    'buy_now' => 'Buy Now',
+    'insufficient_coins' => 'Insufficient Coins'
 ];
 
 ?>

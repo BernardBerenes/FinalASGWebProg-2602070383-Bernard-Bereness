@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $user->name }}</h5>
-                        <p class="card-text">Profession: {{ $user->fields_of_interest }}</p>
+                        <p class="card-text">Profession: {{ Str::limit(implode(', ', json_decode($user->fields_of_interest, true)), 30, '...') }}</p>
                     </div>
                 </div>
             </div>
