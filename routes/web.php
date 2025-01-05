@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [NavigationController::class, 'homePage'])->name('homePage');
 Route::get('/friend', [NavigationController::class, 'friendPage'])->name('friendPage');
 Route::get('/detail/{user_id}/', [NavigationController::class, 'detailPage'])->name('detailPage');
+Route::get('/friend-request', [NavigationController::class, 'friendRequestPage'])->name('friendRequestPage');
+Route::post('/accept-friend/{sender_id}', [FriendController::class, 'acceptFriend'])->name('acceptFriend');
+Route::post('/reject-friend/{sender_id}', [FriendController::class, 'rejectFriend'])->name('rejectFriend');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [NavigationController::class, 'loginPage'])->name('loginPage');

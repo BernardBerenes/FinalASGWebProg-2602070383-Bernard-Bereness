@@ -54,7 +54,7 @@ class NavigationController extends Controller
                 ->unique()
                 ->toArray();
 
-                $users = User::
+            $users = User::
                 whereNotIn('id', $excludedUserIds)
                 ->when($request->gender, function ($query) use ($request) {
                     return $query->where('gender', $request->gender);
@@ -116,5 +116,28 @@ class NavigationController extends Controller
         $avatars = Avatar::whereNotIn('id', $ownedAvatarIds)->paginate(6);
 
         return view('pages.avatar-market', compact('avatars'));
+    }
+
+    public function friendRequestPage()
+    {
+        $authUserId = Auth::user()->id;
+
+        $includedUserIdsPending = Friend::where('receiver_id', $authUserId)
+            ->where('status', 'Pending')
+            ->pluck('sender_id');
+
+        $pendingRequests = User::
+            whereIn('id', $includedUserIdsPending)
+            ->get();
+
+        $includedUserIdsAccepted = Friend::where('receiver_id', $authUserId)
+            ->where('status', 'Accepted')
+            ->pluck('sender_id');
+
+        $acceptedFriends = User::
+            whereIn('id', $includedUserIdsAccepted)
+            ->get();
+
+        return view('pages.friend-request', compact('pendingRequests', 'acceptedFriends'));
     }
 }

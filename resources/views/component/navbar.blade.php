@@ -52,6 +52,7 @@
                                 <strong class="px-3 d-block text-truncate" style="max-width: 180px;">{{ Auth::user()->name }}</strong>
                             </li>
                             <li><a class="dropdown-item mt-2" href="{{ route('myProfilePage') }}">@lang('lang.profile')</a></li>
+                            <li><a class="dropdown-item" href="{{ route('friendRequestPage') }}">@lang('lang.friend_request')</a></li>
                             <li><a class="dropdown-item" href="{{ route('topupPage') }}">@lang('lang.top_up') Coin</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>

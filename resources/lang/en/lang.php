@@ -8,6 +8,7 @@ return [
     'login' => 'Login',
     'register' => 'Register',
     'profile' => 'Profile',
+    'friend_request' => 'Friend Request',
     'top_up' => 'Top Up',
     'logout' => 'Logout',
     'full_name' => 'Full Name',
@@ -42,7 +43,9 @@ return [
     'avatar_shop' => 'Avatar Shop',
     'avatar_shop_tag' => 'Browse and purchase avatars to customize your profile.',
     'buy_now' => 'Buy Now',
-    'insufficient_coins' => 'Insufficient Coins'
+    'insufficient_coins' => 'Insufficient Coins',
+    'pending_request' => 'Pending Requests',
+    'accepted_friend' => 'Accepted Friends'
 ];
 
 ?>

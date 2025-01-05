@@ -20,7 +20,7 @@ return new class extends Migration
             $table->json('fields_of_interest');
             $table->string('linkedin_username');
             $table->string('phone_number');
-            $table->integer('coin')->default(0);
+            $table->integer('coin')->default(100);
             $table->string('profile_picture')->nullable();
             $table->boolean('visibility')->default(true);
             $table->rememberToken();

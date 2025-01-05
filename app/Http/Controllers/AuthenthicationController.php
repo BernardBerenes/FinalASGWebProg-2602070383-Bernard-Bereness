@@ -92,7 +92,7 @@ class AuthenthicationController extends Controller
             'fields_of_interest' => json_encode(explode(',', $user_data['fields_of_interest'])),
             'linkedin_username' => $user_data['linkedin_username'],
             'phone_number' => $user_data['phone_number'],
-            'coin' => session('overpaid')
+            'coin' => session('overpaid') + 100
         ]);
 
         session()->flush();

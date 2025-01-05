@@ -24,7 +24,7 @@ class AvatarSeeder extends Seeder
         for ($i=1; $i <= 5; $i++) { 
             Avatar::create([
                 'name' => $name[$i - 1],
-                'price' => rand(100, 1000),
+                'price' => rand(50, 100000),
                 'path' => '/assets/images/avatar/'.$i.'.png'
             ]);
         }

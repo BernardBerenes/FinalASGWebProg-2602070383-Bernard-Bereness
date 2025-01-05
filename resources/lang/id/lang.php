@@ -8,6 +8,7 @@ return [
     'login' => 'Masuk',
     'register' => 'Daftar',
     'profile' => 'Profil',
+    'friend_request' => 'Permintaan Pertemanan',
     'top_up' => 'Isi Ulang',
     'logout' => 'Keluar',
     'full_name' => 'Nama Lengkap',
@@ -42,7 +43,9 @@ return [
     'avatar_shop' => 'Toko Avatar',
     'avatar_shop_tag' => 'Telusuri dan beli avatar untuk menyesuaikan profil anda.',
     'buy_now' => 'Beli Sekarang',
-    'insufficient_coins' => 'Koin Tidak Cukup'
+    'insufficient_coins' => 'Koin Tidak Cukup',
+    'pending_request' => 'Permintaan Tertunda',
+    'accepted_friend' => 'Teman yang Diterima'
 ];
 
 ?>
