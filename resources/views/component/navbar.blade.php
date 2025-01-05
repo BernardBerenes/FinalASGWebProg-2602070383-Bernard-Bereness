@@ -45,7 +45,7 @@
                     </div>
                     <div class="dropdown">
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ asset('assets/images/default-avatar.png') }}" alt="Profile" class="rounded-circle" style="height: 40px; width: 40px;">
+                            <img src="{{ Auth::user()->profile_picture ?: asset('assets/images/default-avatar.png') }}" alt="Profile" class="rounded-circle" style="height: 40px; width: 40px;">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="profileDropdown" style="width: 200px;">
                             <li>

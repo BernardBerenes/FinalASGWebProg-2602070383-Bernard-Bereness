@@ -5,7 +5,7 @@
         <div class="text-center mb-4">
             <h1>{{ Auth::user()->name }}'s Profile</h1>
             <p class="text-muted">{{ Auth::user()->email }}</p>
-            <img src="{{ asset('assets/images/default-avatar.png') }}" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+            <img src="{{ Auth::user()->profile_picture ?: asset('assets/images/default-avatar.png') }}" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
         </div>
         <div class="row mb-4">
             <div class="col-md-6">
@@ -13,6 +13,7 @@
                 <ul class="list-group">
                     <li class="list-group-item"><strong>@lang('lang.gender'): </strong>{{ Auth::user()->gender }}</li>
                     <li class="list-group-item"><strong>@lang('lang.fields_of_interest'): </strong>{{ implode(', ', json_decode(Auth::user()->fields_of_interest, true)) }}</li>
+                    <li class="list-group-item"><strong>LinkedIn: </strong><a href="https://www.linkedin.com/in/{{ Auth::user()->linkedin_username }}" target="_blank" rel="noopener noreferrer">{{ Auth::user()->linkedin_username }}</a></li>
                 </ul>
             </div>
             <div class="col-md-6">
@@ -30,14 +31,30 @@
         <div class="mb-4">
             <h5>@lang('lang.your_avatar')</h5>
             <div class="row">
-                @forelse($avatars as $avatar)
-                    <div class="col-md-3 mb-3">
-                        <div class="card text-center pt-3">
+                <div class="col-md-3 mb-3">
+                    <form method="POST" action="{{ route('changeAvatar') }}">
+                        @csrf
+                        <input type="hidden" name="avatar_path" value="">
+                        <div class="card text-center pt-3 {{ Auth::user()->profile_picture === null ? 'border border-3 border-success shadow' : '' }}" style="cursor: pointer;" onclick="this.closest('form').submit();">
                             <img src="{{ asset('assets/images/default-avatar.png') }}" alt="Avatar" class="card-img-top" style="height: 100px; object-fit: contain;">
                             <div class="card-body">
-                                <p class="card-text">{{ $avatar->name }}</p>
+                                <p class="card-text">Default</p>
                             </div>
                         </div>
+                    </form>
+                </div>
+                @forelse($avatars as $avatar)
+                    <div class="col-md-3 mb-3">
+                        <form method="POST" action="{{ route('changeAvatar') }}">
+                            @csrf
+                            <input type="hidden" name="avatar_path" value="{{ $avatar->path }}">
+                            <div class="card text-center pt-3 {{ Auth::user()->profile_picture === $avatar->path ? 'border border-3 border-success shadow' : '' }}" style="cursor: pointer;" onclick="this.closest('form').submit();">
+                                <img src="{{ $avatar->path }}" alt="Avatar" class="card-img-top" style="height: 100px; object-fit: contain;">
+                                <div class="card-body">
+                                    <p class="card-text">{{ $avatar->name }}</p>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 @empty
                     <p class="text-muted">@lang('lang.dont_have_avatar')</p>

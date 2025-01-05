@@ -16,4 +16,13 @@ class UserController extends Controller
 
         return back();
     }
+
+    public function changeAvatar(Request $request)
+    {
+        User::findOrFail(Auth::user()->id)->update([
+            'profile_picture' => $request->avatar_path
+        ]);
+
+        return back();
+    }
 }

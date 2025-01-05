@@ -14,8 +14,14 @@ class NavigationController extends Controller
     public function homePage()
     {
         if (Auth::check()){
-            $user = User::all();
+            $user = User::where('id', '!=', Auth::user()->id)
+                ->where('visibility', true)
+                ->take(6)
+                ->get();
         } else{
+            $user = User::where('visibility', true)
+                ->take(6)
+                ->get();
         }
 
         return view('pages.index')->with('users', $user);
@@ -64,6 +70,13 @@ class NavigationController extends Controller
         }
 
         return view('pages.friend')->with('users', $users)->with('gender_filter', $request->gender)->with('fields_of_interest_filter', $request->fields_of_interest);
+    }
+
+    public function detailPage($user_id)
+    {
+        $user = User::findOrFail($user_id);
+
+        return view('pages.detail', compact('user'));
     }
 
     public function registerPage()

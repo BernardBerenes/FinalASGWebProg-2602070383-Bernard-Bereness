@@ -74,6 +74,11 @@ class AuthenthicationController extends Controller
 
             return back();
         }
+
+        $overpaid = session('overpaid_amount');
+        User::findOrFail(Auth::user()->id)->update([
+            'coin' => Auth::user()->coin + $overpaid
+        ]);
     }
 
     public function overpaidPayment()

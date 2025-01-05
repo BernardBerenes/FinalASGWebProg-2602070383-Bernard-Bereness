@@ -3,6 +3,7 @@
 @section('content')
     <div class="container mt-4">
         <div class="row">
+            <!-- Filter Sidebar -->
             <div class="col-md-3">
                 <h5>Filter</h5>
                 <form method="GET" action="{{ route('friendPage') }}">
@@ -29,10 +30,14 @@
                             <div class="card mb-4">
                                 <form method="POST" action="{{ route('addFriend', ['receiver_id'=>$user->id]) }}" class="card-body d-flex align-items-center">
                                     @csrf
-                                    <img src="{{ asset('assets/images/default-avatar.png') }}" class="rounded-circle me-3" alt="User Avatar" style="height: 60px; width: 60px; object-fit: cover;">
+                                    <img src="{{ $user->profile_picture ?: asset('assets/images/default-avatar.png') }}" class="rounded-circle me-3" alt="User Avatar" style="height: 60px; width: 60px; object-fit: cover;">
                                     <div>
-                                        <h5 class="card-title mb-1">{{ $user->name }}</h5>
-                                        <p class="card-text mb-1 text-muted">{{ Str::limit(implode(', ', json_decode($user->fields_of_interest, true)), 20, '...') }}</p>
+                                        <h5 class="card-title mb-1">
+                                            <a href="{{ route('detailPage', ['user_id'=>$user->id]) }}">{{ $user->name }}</a>
+                                        </h5>
+                                        <p class="card-text mb-1 text-muted">
+                                            {{ Str::limit(implode(', ', json_decode($user->fields_of_interest, true)), 20, '...') }}
+                                        </p>
                                         <button type="submit" class="btn btn-primary btn-sm">👍 @lang('lang.add_friend')</button>
                                     </div>
                                 </form>

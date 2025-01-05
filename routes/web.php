@@ -9,11 +9,8 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [NavigationController::class, 'homePage'])->name('homePage');
-
-
-
-
 Route::get('/friend', [NavigationController::class, 'friendPage'])->name('friendPage');
+Route::get('/detail/{user_id}/', [NavigationController::class, 'detailPage'])->name('detailPage');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [NavigationController::class, 'loginPage'])->name('loginPage');
@@ -40,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/avatar-market', [NavigationController::class, 'avatarMarketPage'])->name('avatarMarketPage');
     Route::post('/purchase-avatar/{avatar_id}', [AvatarController::class, 'purchaseAvatar'])->name('purchaseAvatar');
+    Route::post('/change-avatar', [UserController::class, 'changeAvatar'])->name('changeAvatar');
 });
 
 Route::get('/set-locale/{locale}', function ($locale) {
