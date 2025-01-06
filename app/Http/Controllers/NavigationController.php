@@ -127,14 +127,15 @@ class NavigationController extends Controller
             ->where('status', 'Pending')
             ->pluck('sender_id');
 
+        Friend::whereIn('sender_id', $includedUserIdsPending)
+            ->where('receiver_id', $authUserId)
+            ->update([
+                'seen' => true
+            ]);
+
         $pendingRequests = User::
             whereIn('id', $includedUserIdsPending)
             ->get();
-
-        // $includedUserIdsAccepted = Friend::where('receiver_id', $authUserId)
-        //     ->orWhere('sender_id', $authUserId)
-        //     ->where('status', 'Accepted')
-        //     ->pluck('sender_id');
 
         $includedUserIdsAccepted = Friend::where('sender_id', $authUserId)
             ->orWhere('receiver_id', $authUserId)
@@ -202,6 +203,7 @@ class NavigationController extends Controller
 
         $includedUserIdsPending = Friend::where('receiver_id', $authUserId)
             ->where('status', 'Pending')
+            ->where('seen', false)
             ->pluck('sender_id');
 
         $friendRequestNotification = User::
