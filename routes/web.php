@@ -46,6 +46,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/chat/{current_chat_id?}', [NavigationController::class, 'chatPage'])->name('chatPage');
     Route::post('/send-message/{receiver_id}', [ChatController::class, 'sendMessage'])->name('sendMessage');
+
+    Route::get('/notification', [NavigationController::class, 'notificationPage'])->name('notificationPage');
 });
 
 Route::get('/set-locale/{locale}', function ($locale) {

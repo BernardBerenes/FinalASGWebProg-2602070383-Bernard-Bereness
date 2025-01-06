@@ -131,13 +131,14 @@ class NavigationController extends Controller
             whereIn('id', $includedUserIdsPending)
             ->get();
 
-        $includedUserIdsAccepted = Friend::where('receiver_id', $authUserId)
-            ->orWhere('sender_id', $authUserId)
-            ->where('status', 'Accepted')
-            ->pluck('sender_id');
+        // $includedUserIdsAccepted = Friend::where('receiver_id', $authUserId)
+        //     ->orWhere('sender_id', $authUserId)
+        //     ->where('status', 'Accepted')
+        //     ->pluck('sender_id');
 
         $includedUserIdsAccepted = Friend::where('sender_id', $authUserId)
             ->orWhere('receiver_id', $authUserId)
+            ->where('status', 'Accepted')
             ->get(['sender_id', 'receiver_id'])
             ->flatMap(function ($friend) {
                 return [$friend->sender_id, $friend->receiver_id];
@@ -177,9 +178,36 @@ class NavigationController extends Controller
             if ($chats->isEmpty()){
                 $currentUserChat = User::findOrFail($current_chat_id);
                 $users->push($currentUserChat);
+            } else{
+                if ($chats[0]->receiver_id == Auth::user()->id){
+                    foreach ($chats as $chat) {
+                        $chat->seen = true;
+                        $chat->save();
+                    }
+                }
             }
         }
 
         return view('pages.chat', compact('chats', 'users', 'current_chat_id'));
+    }
+
+    public function notificationPage()
+    {
+        $authUserId = Auth::user()->id;
+
+        $chatNotification = Chat::where('receiver_id', $authUserId)
+            ->where('seen', false)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $includedUserIdsPending = Friend::where('receiver_id', $authUserId)
+            ->where('status', 'Pending')
+            ->pluck('sender_id');
+
+        $friendRequestNotification = User::
+            whereIn('id', $includedUserIdsPending)
+            ->get();
+
+        return view('pages.notification', compact('chatNotification', 'friendRequestNotification'));
     }
 }

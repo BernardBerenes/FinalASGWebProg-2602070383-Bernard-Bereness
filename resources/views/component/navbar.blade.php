@@ -48,6 +48,11 @@
                     <div class="mx-2">
                         <span class="text-muted">Coins: <strong>{{ Auth::user()->coin }}</strong></span>
                     </div>
+                    <div class="me-2">
+                        <a href="{{ route('notificationPage') }}" class="d-block link-dark text-decoration-none">
+                            <i class="bi bi-bell-fill" style="font-size: 1.5rem;"></i>
+                        </a>
+                    </div>
                     <div class="dropdown">
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{{ Auth::user()->profile_picture ?: asset('assets/images/default-avatar.png') }}" alt="Profile" class="rounded-circle" style="height: 40px; width: 40px;">
