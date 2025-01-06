@@ -32,7 +32,7 @@
                     @csrf
                     <div class="form-check form-switch mt-3">
                         <input class="form-check-input" type="checkbox" id="profileVisibilityToggle" {{ Auth::user()->visibility ? 'checked' : '' }}>
-                        <label class="form-check-label" for="profileVisibilityToggle">@lang('lang.make_profile_visible')</label>
+                        <label class="form-check-label" for="profileVisibilityToggle">{{ Auth::user()->visibility ? __('lang.make_profile_invisible').' for 50 Coins' : __('lang.make_profile_visible').' for 5 Coins' }}</label>
                     </div>
                 </form>
                 <p class="text-muted mt-2">@lang('lang.toggle_visible')</p>

@@ -37,6 +37,7 @@ return [
     'profile_detail' => 'Profile Details',
     'profile_visibility' => 'Profile Visibility',
     'make_profile_visible' => 'Make Profile Visible',
+    'make_profile_invisible' => 'Make Profile Invisible',
     'toggle_visible' => 'Toggle to show or hide your profile from others.',
     'your_avatar' => 'Your Avatars',
     'dont_have_avatar' => "You don't have any avatars yet.",

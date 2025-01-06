@@ -37,6 +37,7 @@ return [
     'profile_detail' => 'Detail Profil',
     'profile_visibility' => 'Visibilitas Profil',
     'make_profile_visible' => 'Jadikan Profil Terlihat',
+    'make_profile_invisible' => 'Jadikan Profil Tersembunyi',
     'toggle_visible' => 'Beralih untuk menampilkan atau menyembunyikan profil anda dari orang lain.',
     'your_avatar' => 'Avatar Kamu',
     'dont_have_avatar' => 'Anda belum memiliki avatar apa pun.',
