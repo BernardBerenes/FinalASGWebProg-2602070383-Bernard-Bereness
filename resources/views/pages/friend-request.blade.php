@@ -26,7 +26,7 @@
                                                 style="height: 80px; width: 80px; object-fit: cover;">
                                             <div class="flex-grow-1">
                                                 <a href="{{ route('detailPage', ['user_id'=>$user->id]) }}">{{ $user->name }}</a>
-                                                <p class="card-text mb-2 text-muted">{{ Str::limit(implode(', ', json_decode($user->fields_of_interest, true)), 20, '...') }}</p>
+                                                <p class="card-text mb-2 text-muted">{{ Str::limit(implode(', ', json_decode($user->fields_of_work, true)), 20, '...') }}</p>
                                                 <div class="d-flex justify-content-start gap-2">
                                                     <form method="POST" action="{{ route('acceptFriend', ['sender_id'=>$user->id]) }}" class="w-50">
                                                         @csrf
@@ -50,12 +50,19 @@
                                 <div class="col-md-4">
                                     <div class="card mb-4">
                                         <div class="card-body d-flex align-items-center">
-                                            <img src="{{ asset('assets/images/default-avatar.png') }}" class="rounded-circle me-3" alt="User Avatar" style="height: 60px; width: 60px; object-fit: cover;">
-                                            <div>
+                                            <img src="{{ asset('assets/images/default-avatar.png') }}" 
+                                                class="rounded-circle me-3" 
+                                                alt="User Avatar" 
+                                                style="height: 60px; width: 60px; object-fit: cover;">
+                                            <div class="flex-grow-1">
                                                 <h5 class="card-title mb-1">{{ $friend->name }}</h5>
                                                 <p class="card-text mb-1 text-muted">
-                                                    {{ Str::limit(implode(', ', json_decode($friend->fields_of_interest, true)), 25, '...') }}
+                                                    {{ Str::limit(implode(', ', json_decode($friend->fields_of_work, true)), 24, '...') }}
                                                 </p>
+                                                <a href="{{ route('chatPage', ['current_chat_id' => $friend->id]) }}" 
+                                                class="btn btn-success">
+                                                    <i class="bi bi-chat-dots"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

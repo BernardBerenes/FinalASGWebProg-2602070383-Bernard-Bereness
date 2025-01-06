@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Avatar::class, 'avatar_transactions', 'buyer_id')->withTimestamps();
     }
+
+    public function chat() : HasMany
+    {
+        return $this->hasMany(Chat::class);
+    }
 }

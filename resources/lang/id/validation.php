@@ -17,7 +17,8 @@ return [
     'linkedin_username_required' => 'Kolom LinkedIn wajib diisi.',
     'linkedin_username_regex' => 'Silakan masukkan tautan profil LinkedIn yang valid (misalnya, https://www.linkedin.com/in/username).',
     'phone_number_required' => 'Kolom nomor telepon wajib diisi.',
-    'phone_number_digit' => 'Nomor telepon harus terdiri dari :digits digit.'
+    'phone_number_digit' => 'Nomor telepon harus terdiri dari :digits digit.',
+    'message_required' => 'Pesan tidak boleh kosong.'
 ];
 
 ?>

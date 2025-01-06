@@ -15,7 +15,7 @@ class AuthenthicationController extends Controller
             'email' => 'required|unique:users,email|email',
             'password' => 'required|regex:/[0-9]/|regex:/[a-z]/|regex:/[A-Z]/|regex:/[@$!%*?&#]/',
             'gender' => 'required',
-            'fields_of_interest' => 'required|regex:/^(?:[a-zA-Z\s]+,){2,}[a-zA-Z\s]+$/',
+            'fields_of_work' => 'required|regex:/^(?:[a-zA-Z\s]+,){2,}[a-zA-Z\s]+$/',
             'linkedin_username' => 'required|regex:/^https:\/\/www.linkedin\.com\/in\/[a-zA-Z0-9\-_]+$/',
             'phone_number' => 'required|digits:12'
         ], [
@@ -30,8 +30,8 @@ class AuthenthicationController extends Controller
             'password.regex:/[A-Z]/' => __('validation.password_uppercase'),
             'password.regex:/[@$!%*?&#]/' => __('validation.password_special'),
             'gender.required' => __('validation.gender_required'),
-            'fields_of_interest.required' => __('validation.fields_of_interest_required'),
-            'fields_of_interest.regex' => __('validation.fields_of_interest_regex'),
+            'fields_of_work.required' => __('validation.fields_of_work_required'),
+            'fields_of_work.regex' => __('validation.fields_of_work_regex'),
             'linkedin_username.required' => __('validation.linkedin_username_required'),
             'linkedin_username.regex' => __('validation.linkedin_username_regex'),
             'phone_number.required' => __('validation.phone_number_required'),
@@ -57,7 +57,7 @@ class AuthenthicationController extends Controller
                 'email' => $user_data['email'],
                 'password' => $user_data['password'],
                 'gender' => $user_data['gender'],
-                'fields_of_interest' => json_encode(explode(',', $user_data['fields_of_interest'])),
+                'fields_of_work' => json_encode(explode(',', $user_data['fields_of_work'])),
                 'linkedin_username' => $user_data['linkedin_username'],
                 'phone_number' => $user_data['phone_number']
             ]);
@@ -89,7 +89,7 @@ class AuthenthicationController extends Controller
             'email' => $user_data['email'],
             'password' => $user_data['password'],
             'gender' => $user_data['gender'],
-            'fields_of_interest' => json_encode(explode(',', $user_data['fields_of_interest'])),
+            'fields_of_work' => json_encode(explode(',', $user_data['fields_of_work'])),
             'linkedin_username' => $user_data['linkedin_username'],
             'phone_number' => $user_data['phone_number'],
             'coin' => session('overpaid') + 100

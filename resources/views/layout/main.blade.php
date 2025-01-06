@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Connect Friend</title>
 </head>
 <body>

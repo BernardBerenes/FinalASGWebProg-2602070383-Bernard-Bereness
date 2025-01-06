@@ -12,7 +12,7 @@
                 <h5>@lang('lang.profile_detail')</h5>
                 <ul class="list-group">
                     <li class="list-group-item"><strong>@lang('lang.gender'): </strong>{{ $user->gender }}</li>
-                    <li class="list-group-item"><strong>@lang('lang.fields_of_interest'): </strong>{{ implode(', ', json_decode($user->fields_of_interest, true)) }}</li>
+                    <li class="list-group-item"><strong>@lang('lang.fields_of_work'): </strong>{{ implode(', ', json_decode($user->fields_of_work, true)) }}</li>
                     <li class="list-group-item"><strong>LinkedIn: </strong><a href="{{ $user->linkedin_username }}" target="_blank" rel="noopener noreferrer">{{ $user->linkedin_username }}</a></li>
                 </ul>
             </div>

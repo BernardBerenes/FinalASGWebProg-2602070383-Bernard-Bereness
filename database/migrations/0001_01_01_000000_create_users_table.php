@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('gender', ['Male', 'Female']);
-            $table->json('fields_of_interest');
+            $table->json('fields_of_work');
             $table->string('linkedin_username');
             $table->string('phone_number');
             $table->integer('coin')->default(100);

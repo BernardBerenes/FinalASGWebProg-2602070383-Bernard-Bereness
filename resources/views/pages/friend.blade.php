@@ -16,16 +16,16 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="fieldInterestFilter" class="form-label">@lang('lang.fields_of_interest')</label>
-                        <input type="text" name="fields_of_interest" id="fieldInterestFilter" class="form-control" placeholder="@lang('lang.search')" value="{{ $fields_of_interest_filter }}">
+                        <label for="fieldWorkFilter" class="form-label">@lang('lang.fields_of_work')</label>
+                        <input type="text" name="fields_of_work" id="fieldWorkFilter" class="form-control" placeholder="@lang('lang.search')" value="{{ $fields_of_work_filter }}">
                     </div>
                     <button type="submit" class="btn btn-primary w-100">@lang('lang.apply_filter')</button>
                 </form>
             </div>
             <div class="col-md-9">
-                <h3 class="mb-4">@lang('lang.friend')</h3>
+                <h3>@lang('lang.friend')</h3>
                 <div class="row">
-                    @foreach($users as $user)
+                    @forelse ($users as $user)
                         <div class="col-md-4">
                             <div class="card mb-4">
                                 <form method="POST" action="{{ route('addFriend', ['receiver_id'=>$user->id]) }}" class="card-body d-flex align-items-center">
@@ -33,13 +33,20 @@
                                     <img src="{{ $user->profile_picture ?: asset('assets/images/default-avatar.png') }}" class="rounded-circle me-3" alt="User Avatar" style="height: 60px; width: 60px; object-fit: cover;">
                                     <div>
                                         <h5 class="card-title mb-1"><a href="{{ route('detailPage', ['user_id'=>$user->id]) }}">{{ $user->name }}</a></h5>
-                                        <p class="card-text mb-1 text-muted">{{ Str::limit(implode(', ', json_decode($user->fields_of_interest, true)), 20, '...') }}</p>
+                                        <p class="card-text mb-1 text-muted">{{ Str::limit(implode(', ', json_decode($user->fields_of_work, true)), 20, '...') }}</p>
                                         <button type="submit" class="btn btn-primary btn-sm">👍 @lang('lang.add_friend')</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-12 text-center">
+                            <div class="alert alert-info pb-4">
+                                <i class="bi bi-person-x-fill" style="font-size: 40px;"></i>
+                                <h4 class="mt-2">@lang('lang.no_friends_available')</h4>
+                            </div>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>

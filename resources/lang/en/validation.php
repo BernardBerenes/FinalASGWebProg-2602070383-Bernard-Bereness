@@ -17,7 +17,8 @@ return [
     'linkedin_username_required' => 'The LinkedIn username field is required.',
     'linkedin_username_regex' => 'Please enter a valid LinkedIn profile link (e.g., https://www.linkedin.com/in/username).',
     'phone_number_required' => 'The phone number field is required.',
-    'phone_number_digit' => 'The phone number must be exactly :digits digits.'
+    'phone_number_digit' => 'The phone number must be exactly :digits digits.',
+    'message_required' => 'Message cannot be empty.'
 ];
 
 ?>

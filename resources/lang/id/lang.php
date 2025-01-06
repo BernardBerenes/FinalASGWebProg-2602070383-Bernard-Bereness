@@ -19,8 +19,8 @@ return [
     'gender_placeholder' => 'Pilih jenis kelamin anda',
     'male' => 'Laki-laki',
     'female' => 'Perempuan',
-    'fields_of_interest' => 'Bidang Peminatan',
-    'fields_of_interest_placeholder' => 'Masukan setidaknya 3 bidang (dipisahkan koma)',
+    'fields_of_work' => 'Bidang Kerja',
+    'fields_of_work_placeholder' => 'Masukan setidaknya 3 bidang (dipisahkan koma)',
     'linkedin_username' => 'Profil LinkedIn',
     'phone_number' => 'Nomor Handphone',
     'phone_number_placeholder' => 'Masukan nomor handphone anda',
@@ -32,6 +32,7 @@ return [
     'registration_success' => 'Registrasi Berhasil!',
     'all' => 'Semua',
     'apply_filter' => 'Terapkan',
+    'no_friends_available' => 'Tidak Ada Teman yang Tersedia',
     'add_friend' => 'Tambah Pertemanan',
     'profile_detail' => 'Detail Profil',
     'profile_visibility' => 'Visibilitas Profil',
@@ -45,7 +46,8 @@ return [
     'buy_now' => 'Beli Sekarang',
     'insufficient_coins' => 'Koin Tidak Cukup',
     'pending_request' => 'Permintaan Tertunda',
-    'accepted_friend' => 'Teman yang Diterima'
+    'accepted_friend' => 'Teman yang Diterima',
+    'user_chat' => 'Pengguna yang Baru Saja Chat'
 ];
 
 ?>

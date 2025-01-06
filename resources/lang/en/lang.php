@@ -19,8 +19,8 @@ return [
     'gender_placeholder' => 'Select your gender',
     'male' => 'Male',
     'female' => 'Female',
-    'fields_of_interest' => 'Fields of Interest',
-    'fields_of_interest_placeholder' => 'Enter at least 3 fields (comma-separated)',
+    'fields_of_work' => 'Fields of Work',
+    'fields_of_work_placeholder' => 'Enter at least 3 fields (comma-separated)',
     'linkedin_username' => 'LinkedIn Profile',
     'phone_number' => 'Phone Number',
     'phone_number_placeholder' => 'Enter your phone number',
@@ -32,6 +32,7 @@ return [
     'registration_success' => 'Registration Successfully!',
     'all' => 'All',
     'apply_filter' => 'Apply Filter',
+    'no_friends_available' => 'No Friends Available',
     'add_friend' => 'Add Friend',
     'profile_detail' => 'Profile Details',
     'profile_visibility' => 'Profile Visibility',
@@ -45,7 +46,8 @@ return [
     'buy_now' => 'Buy Now',
     'insufficient_coins' => 'Insufficient Coins',
     'pending_request' => 'Pending Requests',
-    'accepted_friend' => 'Accepted Friends'
+    'accepted_friend' => 'Accepted Friends',
+    'user_chat' => 'Recently Chatted Users'
 ];
 
 ?>

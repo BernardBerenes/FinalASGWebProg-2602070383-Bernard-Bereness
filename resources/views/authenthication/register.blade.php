@@ -45,9 +45,9 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="fields_of_interest" class="form-label">@lang('lang.fields_of_interest')</label>
-                    <input type="text" class="form-control" id="fields_of_interest" name="fields_of_interest" placeholder="@lang('lang.fields_of_interest_placeholder')" value="{{ old('fields_of_interest') }}">
-                    @error('fields_of_interest')
+                    <label for="fields_of_work" class="form-label">@lang('lang.fields_of_work')</label>
+                    <input type="text" class="form-control" id="fields_of_work" name="fields_of_work" placeholder="@lang('lang.fields_of_work_placeholder')" value="{{ old('fields_of_work') }}">
+                    @error('fields_of_work')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>

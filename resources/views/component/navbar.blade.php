@@ -14,6 +14,11 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('avatarMarketPage') ? 'active' : '' }}" href="{{ route('avatarMarketPage') }}">Avatar</a>
                 </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('chat*') ? 'active' : '' }}" href="{{ route('chatPage') }}">Chat</a>
+                    </li>                
+                @endauth
             </ul>
         </div>
         <div class="d-flex align-items-center">

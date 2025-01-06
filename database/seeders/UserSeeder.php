@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'email' => 'bernardbereness78@gmail.com',
             'password' => 'Bernard123!',
             'gender' => 'Male',
-            'fields_of_interest' => json_encode(explode(',', 'Makan, Tidur, Main')),
+            'fields_of_work' => json_encode(explode(',', 'Makan, Tidur, Main')),
             'linkedin_username' => 'WWWW',
             'phone_number' => '081369251040'
         ]);
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 'email' => 'user'.$i.'@gmail.com',
                 'password' => 'user123',
                 'gender' => rand(0, 2) == 0 ? 'Female' : 'Male',
-                'fields_of_interest' => rand(0, 2) == 0 ? json_encode(explode(',', 'Makan, Tidur, Main')) : json_encode(explode(',', 'Makan, Turu, Ngorok')),
+                'fields_of_work' => rand(0, 2) == 0 ? json_encode(explode(',', 'Makan, Tidur, Main')) : json_encode(explode(',', 'Makan, Turu, Ngorok')),
                 'linkedin_username' => 'WWWW',
                 'phone_number' => '081369251040'
             ]);
