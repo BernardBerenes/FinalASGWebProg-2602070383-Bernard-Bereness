@@ -48,7 +48,11 @@ return [
     'insufficient_coins' => 'Koin Tidak Cukup',
     'pending_request' => 'Permintaan Tertunda',
     'accepted_friend' => 'Teman yang Diterima',
-    'user_chat' => 'Pengguna yang Baru Saja Chat'
+    'user_chat' => 'Pengguna yang Baru Saja Chat',
+    'welcome_to_connect_friend' => 'Selamat Datang di ConnectFriend',
+    'find_friends_based_on_your_interests_and_profession' => 'Cari Teman Berdasarkan Peminatan dan Profesi anda',
+    'profession' => 'Profesi',
+    'see_more' => 'Lihat Lebih Banyak'
 ];
 
 ?>

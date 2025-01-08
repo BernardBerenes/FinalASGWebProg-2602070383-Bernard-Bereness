@@ -137,8 +137,10 @@ class NavigationController extends Controller
             whereIn('id', $includedUserIdsPending)
             ->get();
 
-        $includedUserIdsAccepted = Friend::where('sender_id', $authUserId)
-            ->orWhere('receiver_id', $authUserId)
+        $includedUserIdsAccepted = Friend::where(function ($query) use ($authUserId) {
+                $query->where('sender_id', $authUserId)
+                      ->orWhere('receiver_id', $authUserId);
+            })
             ->where('status', 'Accepted')
             ->get(['sender_id', 'receiver_id'])
             ->flatMap(function ($friend) {

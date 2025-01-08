@@ -12,6 +12,6 @@ class FriendSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+
     }
 }

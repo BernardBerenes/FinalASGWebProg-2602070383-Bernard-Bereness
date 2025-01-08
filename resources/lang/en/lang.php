@@ -48,7 +48,11 @@ return [
     'insufficient_coins' => 'Insufficient Coins',
     'pending_request' => 'Pending Requests',
     'accepted_friend' => 'Accepted Friends',
-    'user_chat' => 'Recently Chatted Users'
+    'user_chat' => 'Recently Chatted Users',
+    'welcome_to_connect_friend' => 'Welcome to ConnectFriend',
+    'find_friends_based_on_your_interests_and_profession' => 'Find friends based on your interests and profession',
+    'profession' => 'Profession',
+    'see_more' => 'See More'
 ];
 
 ?>

@@ -19,8 +19,8 @@
 <div class="container mt-4">
     <div class="text-center mb-4">
         <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid" alt="...">
-        <h1>Welcome to ConnectFriend</h1>
-        <p>Find friends based on your interests and profession</p>
+        <h1>@lang('lang.welcome_to_connect_friend')</h1>
+        <p>@lang('lang.find_friends_based_on_your_interests_and_profession')</p>
     </div>
     <div class="row" id="userGallery">
         @foreach($users as $user)
@@ -32,7 +32,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $user->name }}</h5>
-                            <p class="card-text">Profession: {{ Str::limit(implode(', ', json_decode($user->fields_of_work, true)), 30, '...') }}</p>
+                            <p class="card-text">@lang('lang.profession'): {{ Str::limit(implode(', ', json_decode($user->fields_of_work, true)), 30, '...') }}</p>
                         </div>
                     </div>
                 </a>
@@ -40,7 +40,7 @@
         @endforeach
     </div>
     <div class="text-center mt-4">
-        <a href="{{ route('friendPage') }}" class="btn btn-primary">See More</a>
+        <a href="{{ route('friendPage') }}" class="btn btn-primary">@lang('lang.see_more')</a>
     </div>
 </div>
 @endsection

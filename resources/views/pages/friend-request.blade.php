@@ -50,7 +50,7 @@
                                 <div class="col-md-4">
                                     <div class="card mb-4">
                                         <div class="card-body d-flex align-items-center">
-                                            <img src="{{ asset('assets/images/default-avatar.png') }}" 
+                                            <img src="{{ $friend->profile_picture ?: asset('assets/images/default-avatar.png') }}" 
                                                 class="rounded-circle me-3" 
                                                 alt="User Avatar" 
                                                 style="height: 60px; width: 60px; object-fit: cover;">
